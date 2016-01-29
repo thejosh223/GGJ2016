@@ -33,7 +33,6 @@ namespace PubSub {
 	
 	public class PubSubBroker {
 		public delegate void PubSubDelegate(Signal n);
-		
 		Dictionary<Channel, PubSubDelegate> _dict = new Dictionary<Channel, PubSubDelegate>();
 		
 		public void Subscribe(Channel type, PubSubDelegate d) {
@@ -49,7 +48,6 @@ namespace PubSub {
 		}
 		
 		public void Unsubscribe(Channel type, PubSubDelegate d) {
-			PubSubDelegate del = null;
 			if (_dict.ContainsKey(type)) {
 				_dict[type] -= d;
 			}
