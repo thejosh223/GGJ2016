@@ -36,6 +36,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &120966
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 434772}
+  - 114: {fileID: 11475278}
+  m_Layer: 8
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &121610
 GameObject:
   m_ObjectHideFlags: 1
@@ -45,9 +61,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 498538}
   - 212: {fileID: 21254156}
-  - 114: {fileID: 11475278}
+  - 95: {fileID: 9506062}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,6 +189,19 @@ Transform:
   - {fileID: 496518}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &434772
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.5, y: -.100000001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 498538}
+  m_Father: {fileID: 460150}
+  m_RootOrder: 0
 --- !u!4 &448190
 Transform:
   m_ObjectHideFlags: 1
@@ -195,7 +224,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 498538}
+  - {fileID: 434772}
   - {fileID: 416902}
   - {fileID: 421960}
   m_Father: {fileID: 496518}
@@ -233,10 +262,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -.25, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 460150}
+  m_Father: {fileID: 434772}
   m_RootOrder: 0
 --- !u!20 &2079434
 Camera:
@@ -286,6 +315,23 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110698}
   m_Enabled: 1
+--- !u!95 &9506062
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121610}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d891afdfedde851468dad025a60dae6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11401648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba9a74faccd5de429f9b885898e42e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   absoluteSpeed: 0
   targetX: 0
 --- !u!114 &11402362
@@ -335,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba9a74faccd5de429f9b885898e42e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   absoluteSpeed: 0
   targetX: 0
 --- !u!114 &11441544
@@ -381,21 +429,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 69fb2b839ad29e9419324446d3d5ee85, type: 3}
   - {fileID: 21300000, guid: 9d152f1aafeb8f546ab2378055fc2d7b, type: 3}
   - {fileID: 21300000, guid: dedf58f60a256294ca012a6286df0ce6, type: 3}
-  spriteIndex: 0
   scrollSpeedMultiplier: 1
 --- !u!114 &11475278
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121610}
+  m_GameObject: {fileID: 120966}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6796fd1f0825a224d9623ce1e072efec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeMultiplier: 8
-  localDeltaMultiplier: .100000001
+  localDeltaMultiplier: .0900000036
   bobAxis: 1
   timeSync: 0
 --- !u!124 &12446430
@@ -455,7 +502,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6d0ad9a50071b5d4089fa6a5016a2a08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 780934535e61abe4d9b190ffcb5a24b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21269024
 SpriteRenderer:

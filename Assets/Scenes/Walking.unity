@@ -206,23 +206,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 21254156, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 780934535e61abe4d9b190ffcb5a24b3,
-        type: 3}
-    - target: {fileID: 498538, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -.100000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 11475278, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
-      propertyPath: localDeltaMultiplier
-      value: .0900000036
-      objectReference: {fileID: 0}
-    - target: {fileID: 498538, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -4.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1820756989 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 120966, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
+  m_PrefabInternal: {fileID: 1387302592}
+--- !u!114 &1820756992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1820756989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c44937f9abe65429efa70199297db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
