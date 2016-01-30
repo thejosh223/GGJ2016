@@ -66,7 +66,7 @@ GameObject:
   - 20: {fileID: 2001934}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: BulletCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,7 +310,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0999999, y: -2.5, z: 0}
+  m_LocalPosition: {x: -3.0999999, y: -2.91000009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419658}
@@ -414,7 +414,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -2.79999995, y: 0}
+  m_Offset: {x: -2.75, y: 0}
   serializedVersion: 2
   m_Size: {x: .0500000007, y: 2.29999995}
 --- !u!61 &6152116
@@ -485,7 +485,7 @@ MonoBehaviour:
   - {fileID: 11401332}
   - {fileID: 11458726}
   damage: 1
-  speed: .5
+  speed: 2
 --- !u!114 &11430908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51de4be9419647c5af6afa5d77dca12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: .100000001
+  moveSpeed: 2
 --- !u!114 &11435804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -616,7 +616,7 @@ MonoBehaviour:
   - {fileID: 11467942}
   - {fileID: 11440272}
   damage: 1
-  speed: .5
+  speed: 2
 --- !u!212 &21233940
 SpriteRenderer:
   m_ObjectHideFlags: 1
