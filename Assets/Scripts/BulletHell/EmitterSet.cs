@@ -11,6 +11,7 @@ public class EmitterSet : MonoBehaviour {
 	public int countShots = 1;
 
 	public float degreeStep = 0.0f;
+	public float degreeJiggle = 0f;
 	[FormerlySerializedAs("_delay")]
 	public float delayBetweenShots = 0.0f;
 	public bool pingPong = false;
@@ -18,6 +19,7 @@ public class EmitterSet : MonoBehaviour {
 
 	public int damage;
 	public float speed;
+	public float speedJiggle = 0f;
 
 	void OnEnable () {
 		StartCoroutine(InitCoroutine());
@@ -52,7 +54,10 @@ public class EmitterSet : MonoBehaviour {
 
 	void FireEmitters(int damage, float speed, float angle) {
 		foreach (Emitter e in emitters) {
-			e.Fire(bulletPrefab, damage, speed, angle);
+			e.Fire(bulletPrefab, 
+			       damage, 
+			       speed + Random.Range(-speedJiggle, speedJiggle), 
+			       angle + Random.Range(-degreeJiggle, degreeJiggle));
 		}
 	}
 }
