@@ -30,9 +30,11 @@ public class FighterController : MonoBehaviour {
 		Vector3 newPos = transform.position + pos;
 
 		//lol such hack
+		Vector3 dim = GetDimensions2D();
 //		float x = h > 0 ? GetDimensions2D().x : 0f;
 //		float y = v > 0 ? GetDimensions2D().y : 0f;
-		if (!GameMgr.Instance.IsBeyondBulletCamera(new Vector3(newPos.x, newPos.y, 0f))) {
+		if (!GameMgr.Instance.IsBeyondBulletCamera(new Vector3(newPos.x + dim.x / 2, newPos.y + dim.y / 2, 0f)) &&
+		    !GameMgr.Instance.IsBeyondBulletCamera(new Vector3(newPos.x - dim.x / 2, newPos.y - dim.y / 2, 0f))) {
 			transform.Translate(pos);
 		}
 	}
