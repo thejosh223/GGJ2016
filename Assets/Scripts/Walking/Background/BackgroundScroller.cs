@@ -74,6 +74,7 @@ public class BackgroundScroller : MonoBehaviour {
 		GameObject g = new GameObject("BG_" + Random.Range(1000, 9999));
 		g.transform.SetParent(transform);
 		g.transform.position = pos;
+		g.layer = gameObject.layer;
 		if (isRight) {
 			g.transform.SetAsLastSibling();
 		} else {
@@ -101,7 +102,7 @@ public class BackgroundScroller : MonoBehaviour {
 
 	public void ResetSprites() {
 		while (transform.childCount > 0) {
-			DestroyImmediate(transform.GetChild(0));
+			DestroyImmediate(transform.GetChild(0).gameObject);
 		}
 		UpdateSprites();
 	}
