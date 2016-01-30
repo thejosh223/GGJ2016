@@ -9,6 +9,6 @@ public class EmitterSet : MonoBehaviour {
 			e.Init();
 		}
 		Debug.Log("done");
-		Destroy(gameObject);
+		gameObject.SetActive(false);
 	}
 }

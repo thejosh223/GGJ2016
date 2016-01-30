@@ -10,6 +10,7 @@ public class Emitter : MonoBehaviour {
 	public void Init () {
 		GameObject go = Instantiate<GameObject>(GameMgr.Instance.bullet);
 		go.transform.up = transform.up;
+		go.transform.position = transform.position;
 		Bullet b = go.GetComponent<Bullet>();
 		b.moveSpeed = speed;
 		b.damage = damage;
