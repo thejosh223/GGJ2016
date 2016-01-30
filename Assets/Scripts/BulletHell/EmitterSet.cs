@@ -6,9 +6,12 @@ public class EmitterSet : MonoBehaviour {
 
 	public Emitter[] emitters;
 	public int set = 1;
+
 	public float degreeOffset = 30f;
 	public float degreeStep = 0.00f;
 	public float _delay = 0.0f;
+	public bool pingPong = false;
+
 	public int damage;
 	public float speed;
 
@@ -38,10 +41,29 @@ public class EmitterSet : MonoBehaviour {
 				delay = 0.0f;
 			}
 		}
+
+		if (pingPong) {
+			for (int i=0; i<(set*2); i++) {
+				foreach (Emitter e in emitters) {
+					e.Init(damage, speed, deg);
+				}
+				deg -= degreeStep;
+				_spawned++;
+				if (i <= set) {
+					while (delay <= _delay) {
+						Debug.Log("wait");
+						delay += Time.deltaTime;
+						yield return null;
+					}
+					delay = 0.0f;
+				}
+			}
+		}
 	}
 
 	void Update() {
-		if (_spawned >= set) {
+		int m = !pingPong ? set : (set*2);
+		if (_spawned >= m) {
 			StopCoroutine("InitCoroutine");
 			gameObject.SetActive(false);
 		}
