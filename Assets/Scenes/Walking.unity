@@ -136,6 +136,10 @@ Prefab:
       propertyPath: m_Offset.x
       value: -2.75
       objectReference: {fileID: 0}
+    - target: {fileID: 118242, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_TagString
+      value: BulletCamera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
   m_IsPrefabParent: 0
