@@ -12,7 +12,7 @@ public class BulletGameState : StateBehaviour {
 	void Awake() {
 		Initialize<States>();
 	}
-	// Use this for initialization
+
 	void Start () {
 		ChangeState(States.Init);
 	}
