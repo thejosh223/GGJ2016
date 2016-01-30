@@ -351,7 +351,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -2.4000001}
+  m_Offset: {x: 0, y: -2.5}
   serializedVersion: 2
   m_Size: {x: 12, y: .100000001}
 --- !u!61 &49604328
@@ -365,7 +365,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 2.4000001}
+  m_Offset: {x: 0, y: 2.5}
   serializedVersion: 2
   m_Size: {x: 12, y: .100000001}
 --- !u!61 &49604329
@@ -379,7 +379,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -5.80000019, y: 0}
+  m_Offset: {x: -6, y: 0}
   serializedVersion: 2
   m_Size: {x: .100000001, y: 5}
 --- !u!61 &49604330
@@ -392,7 +392,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 5.80000019, y: 0}
+  m_Offset: {x: 6, y: 0}
   serializedVersion: 2
   m_Size: {x: .100000001, y: 5}
 --- !u!1 &63281018
@@ -1011,7 +1011,7 @@ GameObject:
   - 4: {fileID: 676623376}
   - 20: {fileID: 676623377}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: BulletCamera
   m_TagString: BulletCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

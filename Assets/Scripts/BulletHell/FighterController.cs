@@ -30,10 +30,11 @@ public class FighterController : MonoBehaviour {
 		Vector3 newPos = transform.position + pos;
 
 		//lol such hack
-		float x = h > 0 ? GetDimensions2D().x : 0f;
-		float y = v > 0 ? GetDimensions2D().y : 0f;
-		if (!GameMgr.Instance.IsBeyondBulletCamera(new Vector3(newPos.x + x, newPos.y + y, 0f)))
+//		float x = h > 0 ? GetDimensions2D().x : 0f;
+//		float y = v > 0 ? GetDimensions2D().y : 0f;
+		if (!GameMgr.Instance.IsBeyondBulletCamera(new Vector3(newPos.x, newPos.y, 0f))) {
 			transform.Translate(pos);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
@@ -50,7 +51,6 @@ public class FighterController : MonoBehaviour {
 	Vector3 GetDimensions2D() {
 		if (dimensions == Vector3.zero) {
 			Renderer r = GetComponent<Renderer>();
-
 			dimensions = new Vector3(r.bounds.size.x, r.bounds.size.y, 0);
 		}
 		return dimensions;
