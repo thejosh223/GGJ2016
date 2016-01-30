@@ -5,6 +5,9 @@ using PubSub;
 public class GameMgr : MonoBehaviour {
 	static GameMgr _instance;
 	private PubSubBroker _pubsubMgr = new PubSubBroker();
+
+	public GameObject bullet;
+
 	void OnEnable () {
 		if (_instance == null) {
 			_instance = this;
