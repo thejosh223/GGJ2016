@@ -9,7 +9,8 @@ namespace PubSub {
 		BulletHellStart = 10,
 		BulletHellEnd = 11,
 		PostBulletHellEnd = 13,
-		EnemyCollide = 30
+		EnemyCollide = 30,
+		PlayerDead = 40
 	}
 	
 	public class Signal {

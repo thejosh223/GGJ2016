@@ -5,12 +5,19 @@ public class BulletSpawner : MonoBehaviour {
 	public float interval;
 	public EmitterSet[] emitterSets;
 	private float _timer;
-	public void Init() {
-
+	private bool _enabled = false;
+	void OnEnable() {
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellStart, OnBulletHellStart);
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellEnd, OnBulletHellEnd);
+	}
+	void OnDisable() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellStart, OnBulletHellStart);
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, OnBulletHellEnd);
 	}
 
 	private EmitterSet _currentEmitterSet;
 	public void Update() {
+		if (!_enabled) return;
 		if (_timer >= interval) {
 			_timer = 0f;
 			_currentEmitterSet = emitterSets[Random.Range(0, emitterSets.Length)];
@@ -20,5 +27,12 @@ public class BulletSpawner : MonoBehaviour {
 		} else {
 			_timer += Time.deltaTime;
 		}
+	}
+
+	void OnBulletHellStart(PubSub.Signal s) {
+		_enabled = true;
+	}
+	void OnBulletHellEnd(PubSub.Signal s) {
+		_enabled = false;
 	}
 }

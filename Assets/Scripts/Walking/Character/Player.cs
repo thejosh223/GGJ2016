@@ -23,8 +23,17 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollideWithBullet(PubSub.Signal signal) {
-		horniness -= ((Bullet) signal.sender).damage;
+		Debug.Log(signal.data["damage"]);
+		if (signal.data != null && signal.data.ContainsKey("damage")) {
+			horniness -= (int)signal.data["damage"];
+		} else {
+			horniness -= 10;
+		}
 		SweatForSeconds(2f);
+
+		if (horniness <= 0) {
+			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PlayerDead, this);
+		}
 	}
 
 	public void SweatForSeconds(float duration) {
