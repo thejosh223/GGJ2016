@@ -7,7 +7,7 @@ public class Emitter : MonoBehaviour {
 	public float speed = 1f;
 	
 	// Use this for initialization
-	public void Init () {
+	public void Init (int damage, float speed) {
 		GameObject go = Instantiate<GameObject>(GameMgr.Instance.bullet);
 		go.transform.up = transform.up;
 		go.transform.position = transform.position;
