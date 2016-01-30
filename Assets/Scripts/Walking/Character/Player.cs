@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 		SweatForSeconds(2f);
 
 		if (horniness <= 0) {
-
+			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PlayerDead, this);
 		}
 	}
 

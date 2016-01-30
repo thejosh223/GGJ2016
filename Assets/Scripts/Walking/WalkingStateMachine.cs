@@ -11,6 +11,14 @@ public class WalkingStateMachine : StateBehaviour {
 		PostBulletHell
 	}
 
+	void OnEnable() {
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PlayerDead, OnPlayerDead);
+	}
+
+	void OnDisable() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.PlayerDead, OnPlayerDead);
+	}
+
 	void Start() {
 		Initialize<WalkingStates>();
 		ChangeState(WalkingStates.IdleWalking);
@@ -81,5 +89,8 @@ public class WalkingStateMachine : StateBehaviour {
 		FadeOutOverlay.Instance.FadeOutIn(0.25f, 0.1f, () => GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PostBulletHellEnd, this));
 	}
 
-
+	void OnPlayerDead(PubSub.Signal s) {
+		//death event
+		Debug.Log("you died");
+	}
 }
