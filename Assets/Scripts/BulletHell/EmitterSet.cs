@@ -19,24 +19,23 @@ public class EmitterSet : MonoBehaviour {
 	}
 
 	IEnumerator InitCoroutine() {
-		float deg = 0.0f;
+		float deg = 0.000f;
 		float delay = 0.0f;
 		_spawned = 0;
-		for (int i=0; i<=set; i++) {
+		for (int i=0; i<set; i++) {
+			Debug.Log(i);
 			foreach (Emitter e in emitters) {
-				if (i == 0) {
-					e.Init(damage, speed, degreeOffset);
-				} else {
-					deg += degreeStep;
-					e.Init(damage, speed, deg+degreeOffset);
-				}
+				e.Init(damage, speed, deg);
 			}
+			deg += degreeStep;
 			_spawned++;
 			if (i <= set) {
 				while (delay <= _delay) {
+					Debug.Log("wait");
 					delay += Time.deltaTime;
 					yield return null;
 				}
+				delay = 0.0f;
 			}
 		}
 	}

@@ -148,7 +148,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -171,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &22312216
 Transform:
   m_ObjectHideFlags: 0
@@ -203,6 +205,10 @@ MonoBehaviour:
   - {fileID: 2055943472}
   - {fileID: 1995574473}
   - {fileID: 1636410049}
+  set: 1
+  degreeOffset: 30
+  degreeStep: 0
+  _delay: 0
   damage: 1
   speed: 2
 --- !u!1 &49479765
@@ -271,7 +277,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -426,7 +434,6 @@ MonoBehaviour:
   interval: 1.5
   emitterSets:
   - {fileID: 1903516828}
-  - {fileID: 408374953}
 --- !u!1 &107772698
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!4 &107772700
 Transform:
   m_ObjectHideFlags: 0
@@ -499,13 +508,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!4 &151844874
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 417552, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 151844872}
-  m_LocalRotation: {x: 0, y: 0, z: .867221594, w: .49792248}
+  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106709}
   m_LocalPosition: {x: 2.98023224e-08, y: 6.70552254e-08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -587,6 +598,10 @@ MonoBehaviour:
   - {fileID: 1505526957}
   - {fileID: 1071082216}
   - {fileID: 107772699}
+  set: 1
+  degreeOffset: 30
+  degreeStep: 0
+  _delay: 0
   damage: 1
   speed: 2
 --- !u!4 &408374954
@@ -758,7 +773,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -919,7 +936,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1308,6 +1327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!4 &1071082217
 Transform:
   m_ObjectHideFlags: 0
@@ -1611,13 +1632,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!4 &1292205750
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 487114, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1292205748}
-  m_LocalRotation: {x: 0, y: 0, z: .463016629, w: .886349618}
+  m_LocalRotation: {x: 0, y: 0, z: .258819073, w: .965925813}
   m_LocalPosition: {x: 2.98023224e-08, y: .150000036, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1733,6 +1756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!4 &1505526958
 Transform:
   m_ObjectHideFlags: 0
@@ -1787,6 +1812,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!1 &1797130245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,13 +1844,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!4 &1797130247
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 494680, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1797130245}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .50000006, w: .866025388}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2007,6 +2036,10 @@ MonoBehaviour:
   - {fileID: 1292205749}
   - {fileID: 1797130246}
   - {fileID: 151844873}
+  set: 3
+  degreeOffset: 5
+  degreeStep: 15
+  _delay: .25
   damage: 1
   speed: 2
 --- !u!4 &1903516829
@@ -2016,7 +2049,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1903516827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.51999998, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1292205750}
@@ -2066,6 +2099,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0
 --- !u!1 &2055943470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,3 +2143,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: .5
+  sineFrequency: 0
+  cosFrequency: 0

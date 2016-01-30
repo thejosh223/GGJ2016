@@ -11,13 +11,12 @@ public class Emitter : MonoBehaviour {
 
 	// Use this for initialization
 	public void Init (int damage, float speed, float rotation=0f) {
+		Debug.Log("init");
 		GameObject go = Instantiate<GameObject>(GameMgr.Instance.bullet);
 		go.transform.up = transform.up;
 		if (rotation > 0.0f) {
-			Debug.Log(go.transform.eulerAngles);
-			go.transform.Rotate(new Vector3(0f, 0f, rotation));
-			Debug.Log(go.transform.eulerAngles);
-			Debug.Break();
+			//Debug.Log(go.transform.eulerAngles);
+			go.transform.eulerAngles = new Vector3(0f, 0f, go.transform.eulerAngles.z+rotation);
 		}
 		go.transform.position = transform.position;
 		Bullet b = go.GetComponent<Bullet>();
