@@ -98,7 +98,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472160, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.91000009
       objectReference: {fileID: 0}
     - target: {fileID: 472160, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -123,6 +123,18 @@ Prefab:
     - target: {fileID: 472160, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152116, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_Size.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152116, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_Offset.x
+      value: -.0700000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108846, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_Offset.x
+      value: -2.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
@@ -154,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3d84857a22148129df3f5bad45f27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletCameraUpperLeft: {x: 0, y: 0, z: 0}
+  bulletCameraLowerRight: {x: 0, y: 0, z: 0}
   bullet: {fileID: 112916, guid: e7152d49d1dda4251ab8af72a7831afb, type: 2}
 --- !u!4 &1147758241
 Transform:
