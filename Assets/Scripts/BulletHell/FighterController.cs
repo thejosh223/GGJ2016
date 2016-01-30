@@ -2,15 +2,25 @@
 using System.Collections;
 
 public class FighterController : MonoBehaviour {
+
 	public float moveSpeed = 1f;
 	private Vector3 dimensions = Vector3.zero;
 
-	// Use this for initialization
-	void Start () {
-	
+	public Sprite damageSprite;
+	Sprite defaultSprite;
+	SpriteRenderer spriteRenderer;
+
+	void Start() {
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		defaultSprite = spriteRenderer.sprite;
 	}
-	
-	// Update is called once per frame
+
+	IEnumerator AnimateDamage() {
+		spriteRenderer.sprite = damageSprite;
+		yield return new WaitForSeconds(0.5f);
+		spriteRenderer.sprite = defaultSprite;
+	}
+
 	void Update () {
 		float h = Input.GetAxisRaw("Horizontal");
 		float v = Input.GetAxisRaw("Vertical");
@@ -31,6 +41,9 @@ public class FighterController : MonoBehaviour {
 		if (other.gameObject.tag == "Enemy") {
 			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.EnemyCollide, this);
 			Debug.Log("boom");
+
+			// Animate damage
+			StartCoroutine(AnimateDamage());
 		}
 	}
 
