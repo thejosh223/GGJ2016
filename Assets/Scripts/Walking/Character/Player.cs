@@ -3,13 +3,16 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public float horniness { get; set; }
+	const int MAX_HORNINESS = 100;
+	public int horniness { get; set; }
+	public float horninessPercentage { get { return (float) horniness / (float) MAX_HORNINESS; } }
 
 	Animator animator;
 	Coroutine sweatingCoroutine;
 
 	void Awake() {
 		__instance = this;
+		horniness = MAX_HORNINESS;
 	}
 
 	void Start() {
@@ -20,6 +23,12 @@ public class Player : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Alpha9)) {
 			SweatForSeconds(2f);
 		}
+		if (Input.GetKeyDown(KeyCode.L)) {
+			horniness -= 10;
+		} else  if (Input.GetKeyDown(KeyCode.P)) {
+			horniness += 10;
+		}
+	
 	}
 
 	public void SweatForSeconds(float duration) {

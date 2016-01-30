@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 434772}
   - 114: {fileID: 11475278}
+  - 114: {fileID: 11470212}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -430,6 +431,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9d152f1aafeb8f546ab2378055fc2d7b, type: 3}
   - {fileID: 21300000, guid: dedf58f60a256294ca012a6286df0ce6, type: 3}
   scrollSpeedMultiplier: 1
+--- !u!114 &11470212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c44937f9abe65429efa70199297db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11475278
 MonoBehaviour:
   m_ObjectHideFlags: 1
