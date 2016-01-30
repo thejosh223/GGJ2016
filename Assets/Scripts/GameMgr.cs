@@ -43,8 +43,8 @@ public class GameMgr : MonoBehaviour {
 			bulletCameraLowerRight = GetBulletCamera().ViewportToWorldPoint(new Vector3(1, 0, 0));
 		}
 
-		Debug.Log(bulletCameraUpperLeft);
-		Debug.Log(bulletCameraLowerRight);
+//		Debug.Log(bulletCameraUpperLeft);
+//		Debug.Log(bulletCameraLowerRight);
 
 		bool beyondX = pos.x <= bulletCameraUpperLeft.x || pos.x >= bulletCameraLowerRight.x;
 		bool beyondY = pos.y <= bulletCameraLowerRight.y || pos.y >= bulletCameraUpperLeft.y;
