@@ -1,8 +1,10 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
-	
+
+	public SpriteRenderer spriteRenderer;
 	public float absoluteSpeed;
 	public float targetX;
 
@@ -10,6 +12,7 @@ public class Enemy : MonoBehaviour {
 
 	void Start() {
 		scrollController = transform.parent.GetComponentInParent<ScrollController>();
+		spriteRenderer.sprite = scrollController.currentLocation.GetRandomLocationSprite();
 	}
 
 	void Update() {

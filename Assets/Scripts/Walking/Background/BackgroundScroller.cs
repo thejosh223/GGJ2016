@@ -4,7 +4,6 @@ using System.Collections;
 public class BackgroundScroller : MonoBehaviour {
 
 	public Sprite[] sprites;
-	public int spriteIndex;
 	public float scrollSpeedMultiplier;
 
 	ScrollController parentScroller;
@@ -81,7 +80,7 @@ public class BackgroundScroller : MonoBehaviour {
 			g.transform.SetAsFirstSibling();
 		}
 		SpriteRenderer s = g.AddComponent<SpriteRenderer>();
-		s.sprite = sprites[spriteIndex];
+		s.sprite = sprites[(int) parentScroller.currentLocation];
 
 		if (!isRight) {
 			g.transform.position -= Vector3.right * g.transform.localScale.x * s.sprite.texture.width / s.sprite.pixelsPerUnit;
@@ -92,12 +91,8 @@ public class BackgroundScroller : MonoBehaviour {
 
 	
 	void OnPostBulletHellExit(PubSub.Signal s) {
-		NextIndex();
+		parentScroller.NextLocation();
 		ResetSprites();
-	}
-
-	public void NextIndex() {
-		spriteIndex = (spriteIndex + 1) % sprites.Length;
 	}
 
 	public void ResetSprites() {

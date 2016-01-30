@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.25, z: 0}
+  m_LocalPosition: {x: 0, y: -.100000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400420}
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeMultiplier: 8
-  localDeltaMultiplier: .100000001
+  localDeltaMultiplier: .0900000036
   bobAxis: 1
   timeSync: 0
 --- !u!114 &11487604
@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba9a74faccd5de429f9b885898e42e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 21286904}
   absoluteSpeed: 0
   targetX: 0
 --- !u!212 &21286904
@@ -129,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: localDeltaMultiplier
-      value: .100000001
+      value: .0900000036
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bobAxis
@@ -138,6 +139,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 21286904}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: -.100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
