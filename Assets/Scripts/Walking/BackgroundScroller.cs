@@ -21,9 +21,9 @@ public class BackgroundScroller : MonoBehaviour {
 
 	void UpdateSprites() {
 		Camera cam = parentScroller.camera;
-		Vector3 leftBound = cam.ViewportToWorldPoint(new Vector3(0f, 0.5f, 0f));
+		Vector3 leftBound = cam.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
 		leftBound.z = 0f;
-		Vector3 rightBound = cam.ViewportToWorldPoint(new Vector3(1f, 0.5f, 0f));
+		Vector3 rightBound = cam.ViewportToWorldPoint(new Vector3(1f, 0f, 0f));
 		rightBound.z = 0f;
 
 		if (transform.childCount == 0) {
@@ -60,7 +60,7 @@ public class BackgroundScroller : MonoBehaviour {
 				Destroy(transform.GetChild(i).gameObject);
 			}
 
-//			// Destroy the rights
+			// Destroy the rights
 			Transform rightTransform = transform.GetChild(transform.childCount - i - 1);
 			if (rightTransform.position.x > rightBound.x) {
 				Destroy(rightTransform.gameObject);
