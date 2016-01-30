@@ -28,7 +28,7 @@ public static class LocationExtensions {
 				break;
 		}
 
-		return Resources.Load<Sprite>("Sprites/Characters/girl" + array[Random.Range(0, array.Length - 1)]);
+		return Resources.Load<Sprite>("Sprites/Characters/girl" + array[Random.Range(0, array.Length)]);
 	}
 
 }
