@@ -8,8 +8,6 @@ public class BackgroundScroller : MonoBehaviour {
 //	public bool makeContinuous;
 
 	ScrollController parentScroller;
-	Transform leftMostObject;
-	Transform rightMostObject;
 
 	void Start() {
 		parentScroller = GetComponentInParent<ScrollController>();
@@ -30,34 +28,54 @@ public class BackgroundScroller : MonoBehaviour {
 
 		if (transform.childCount == 0) {
 			// Spawn one in left-most position
-			leftMostObject = SpawnRandomSpriteAt(leftBound);
-			rightMostObject = leftMostObject;
+			SpawnRandomSpriteAt(leftBound);
 		}
 
+		// Set LeftMost object and RightMost object
+		Transform leftMostTransform = transform.GetChild(0);
+		Transform rightMostTransform = transform.GetChild(transform.childCount - 1);
+
 		// Spawning stuff on the left and right bounds
-		while (rightMostObject.position.x < rightBound.x) {
-			SpriteRenderer s = rightMostObject.GetComponent<SpriteRenderer>();
-			Vector3 sBound = rightMostObject.position + Vector3.right * rightMostObject.localScale.x * s.sprite.texture.width / s.sprite.pixelsPerUnit;
-			rightMostObject = SpawnRandomSpriteAt(sBound);
+		while (rightMostTransform.position.x < rightBound.x) {
+			SpriteRenderer s = rightMostTransform.GetComponent<SpriteRenderer>();
+			Vector3 sBound = rightMostTransform.position + Vector3.right * rightMostTransform.localScale.x * s.sprite.texture.width / s.sprite.pixelsPerUnit;
+			rightMostTransform = SpawnRandomSpriteAt(sBound, true);
 		}
-		while (leftMostObject.position.x > leftBound.x) {
-			SpriteRenderer s = rightMostObject.GetComponent<SpriteRenderer>();
-			Vector3 sBound = leftMostObject.position;
-			leftMostObject = SpawnRandomSpriteAt(sBound, false);
+		while (leftMostTransform.position.x > leftBound.x) {
+			SpriteRenderer s = rightMostTransform.GetComponent<SpriteRenderer>();
+			Vector3 sBound = leftMostTransform.position;
+			leftMostTransform = SpawnRandomSpriteAt(sBound, false);
 		}
 
 		// Destroying things on the left and right bounds
-//		for (int i = 0; i < 
+		leftBound += Vector3.left;
+		rightBound += Vector3.right;
+		for (int i = 0; i < transform.childCount; i++) {
+
+			// Destroy the lefts
+			Transform leftTransform = transform.GetChild(i);
+			Sprite leftSprite = leftTransform.GetComponent<SpriteRenderer>().sprite;
+			Vector3 leftPosition = leftTransform.position + Vector3.right * leftTransform.localScale.x * leftSprite.texture.width / leftSprite.pixelsPerUnit;
+			if (leftPosition.x < leftBound.x) {
+				Destroy(transform.GetChild(i).gameObject);
+			}
+
+//			// Destroy the rights
+			Transform rightTransform = transform.GetChild(transform.childCount - i - 1);
+			if (rightTransform.position.x > rightBound.x) {
+				Destroy(rightTransform.gameObject);
+			}
+		}
 	}
 
 	Transform SpawnRandomSpriteAt(Vector3 pos, bool isRight = true) {
-		GameObject g = new GameObject();
+		GameObject g = new GameObject("BG_" + Random.Range(1000, 9999));
 		g.transform.SetParent(transform);
 		g.transform.position = pos;
 		if (isRight) {
 			g.transform.SetAsLastSibling();
 		} else {
-			g.transform.SetAsLastSibling();
+			g.transform.SetAsFirstSibling();
 		}
 		SpriteRenderer s = g.AddComponent<SpriteRenderer>();
 		s.sprite = sprites[Random.Range(0, sprites.Length)];
