@@ -17,6 +17,13 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		animator = GetComponentInChildren<Animator>();
+		
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
+	}
+
+	void OnCollideWithBullet(PubSub.Signal signal) {
+		horniness -= 10;
+		SweatForSeconds(2f);
 	}
 
 	void Update() {
