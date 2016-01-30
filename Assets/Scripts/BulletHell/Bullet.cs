@@ -4,15 +4,16 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 	public float moveSpeed;
 	public int damage;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		transform.Translate(transform.up * moveSpeed * Time.deltaTime, Space.World);
 	}
 
 	//TODO get rid of bullet if out of range
+	void OnCollisionEnter2D(Collision2D other) {
+		Debug.Log("bullet hit something");
+		if (other.gameObject.tag == "Environment" || other.gameObject.tag == "Player") {
+			Destroy(gameObject);
+		}
+	}
 }
