@@ -10,6 +10,10 @@ public class FighterController : MonoBehaviour {
 	Sprite defaultSprite;
 	SpriteRenderer spriteRenderer;
 
+	void Awake() {
+		__instance = this;
+	}
+
 	void Start() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		defaultSprite = spriteRenderer.sprite;
@@ -58,4 +62,10 @@ public class FighterController : MonoBehaviour {
 		}
 		return dimensions;
 	}
+
+	private static FighterController __instance;
+	public static FighterController Instance {
+		get { return __instance; }
+	}
+
 }

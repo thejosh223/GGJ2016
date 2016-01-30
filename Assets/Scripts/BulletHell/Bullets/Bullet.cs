@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		Debug.Log("bullet hit something");
 		if (other.gameObject.tag == "Player" || other.gameObject.tag == "Environment") {
 			Destroy(gameObject);
         }
