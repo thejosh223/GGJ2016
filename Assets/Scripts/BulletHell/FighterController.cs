@@ -11,10 +11,10 @@ public class FighterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(new Vector3(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical")));
+		transform.Translate(new Vector3(moveSpeed * Input.GetAxisRaw("Horizontal"), moveSpeed * Input.GetAxisRaw("Vertical")));
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log("collision :"+other.gameObject);
 		if (other.gameObject.tag == "Enemy") {
 			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.EnemyCollide, this);

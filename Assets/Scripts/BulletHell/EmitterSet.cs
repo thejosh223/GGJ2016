@@ -10,7 +10,6 @@ public class EmitterSet : MonoBehaviour {
 		foreach (Emitter e in emitters) {
 			e.Init(damage, speed);
 		}
-		Debug.Log("done");
 		gameObject.SetActive(false);
 	}
 }
