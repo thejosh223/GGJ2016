@@ -6,7 +6,6 @@ public class EmitterSet : MonoBehaviour {
 	const float DEGREES = 180f;
 
 	public GameObject bulletPrefab;
-	public Emitter[] emitters;
 	[FormerlySerializedAs("set")]
 	public int countShots = 1;
 
@@ -53,6 +52,7 @@ public class EmitterSet : MonoBehaviour {
 	}
 
 	void FireEmitters(int damage, float speed, float angle) {
+		Emitter[] emitters = GetComponentsInChildren<Emitter>();
 		foreach (Emitter e in emitters) {
 			e.Fire(bulletPrefab, 
 			       damage, 
