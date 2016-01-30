@@ -17,12 +17,16 @@ public class BulletSpawner : MonoBehaviour {
 
 	private EmitterSet _currentEmitterSet;
 	public void Update() {
-		if (!_enabled) return;
+		if (!_enabled) {
+			_timer = 0f;
+			return;
+		}
+
 		if (_timer >= interval) {
 			_timer = 0f;
 			_currentEmitterSet = emitterSets[Random.Range(0, emitterSets.Length)];
 			if (_currentEmitterSet == null) return;
-			if (!_currentEmitterSet.gameObject.activeInHierarchy)
+			if (!_currentEmitterSet.gameObject.activeInHierarchy && enabled)
 				_currentEmitterSet.gameObject.SetActive(true);
 		} else {
 			_timer += Time.deltaTime;
@@ -34,5 +38,11 @@ public class BulletSpawner : MonoBehaviour {
 	}
 	void OnBulletHellEnd(PubSub.Signal s) {
 		_enabled = false;
+		foreach (GameObject g in GameObject.FindGameObjectsWithTag("Enemy")) {
+			Destroy(g);
+		}
+		foreach (EmitterSet e in emitterSets) {
+			e.gameObject.SetActive(false);
+		}
 	}
 }
