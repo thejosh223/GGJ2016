@@ -8,7 +8,6 @@ public class GameMgr : MonoBehaviour {
 	void OnEnable () {
 		if (_instance == null) {
 			_instance = this;
-			Debug.Log(_instance);
 			DontDestroyOnLoad(_instance);
 		}
 	}

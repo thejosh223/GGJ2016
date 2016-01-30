@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace PubSub {
 	public enum Channel {
 		Null = 0,
+		EnemyCollide
 	}
 	
 	public class Signal {
