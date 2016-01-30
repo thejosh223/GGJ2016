@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	const int MAX_HORNINESS = 100;
+
 	public int horniness { get; set; }
 	public float horninessPercentage { get { return (float) horniness / (float) MAX_HORNINESS; } }
 
@@ -17,25 +18,13 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		animator = GetComponentInChildren<Animator>();
-		
+
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
 	}
 
 	void OnCollideWithBullet(PubSub.Signal signal) {
-		horniness -= 10;
+		horniness -= ((Bullet) signal.sender).damage;
 		SweatForSeconds(2f);
-	}
-
-	void Update() {
-		if (Input.GetKeyDown(KeyCode.Alpha9)) {
-			SweatForSeconds(2f);
-		}
-		if (Input.GetKeyDown(KeyCode.L)) {
-			horniness -= 10;
-		} else  if (Input.GetKeyDown(KeyCode.P)) {
-			horniness += 10;
-		}
-	
 	}
 
 	public void SweatForSeconds(float duration) {

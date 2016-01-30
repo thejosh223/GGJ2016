@@ -40,10 +40,10 @@ public class FighterController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		Debug.Log("collision :"+other.gameObject);
+//		Debug.Log("collision :"+other.gameObject);
 		if (other.gameObject.tag == "Enemy") {
-			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.EnemyCollide, this);
-			Debug.Log("boom");
+			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.EnemyCollide, other.gameObject.GetComponent<Bullet>());
+//			Debug.Log("boom");
 
 			// Animate damage
 			StartCoroutine(AnimateDamage());
