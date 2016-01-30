@@ -14,6 +14,7 @@ public class BulletSpawner : MonoBehaviour {
 		if (_timer >= interval) {
 			_timer = 0f;
 			_currentEmitterSet = emitterSets[Random.Range(0, emitterSets.Length)];
+			if (_currentEmitterSet == null) return;
 			if (!_currentEmitterSet.gameObject.activeInHierarchy)
 				_currentEmitterSet.gameObject.SetActive(true);
 		} else {
