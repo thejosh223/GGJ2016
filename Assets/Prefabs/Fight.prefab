@@ -423,6 +423,8 @@ MonoBehaviour:
   - {fileID: 11430908}
   - {fileID: 11401332}
   - {fileID: 11458726}
+  damage: 1
+  speed: .5
 --- !u!114 &11430908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,6 +532,8 @@ MonoBehaviour:
   - {fileID: 11463874}
   - {fileID: 11467942}
   - {fileID: 11440272}
+  damage: 1
+  speed: .5
 --- !u!212 &21233940
 SpriteRenderer:
   m_ObjectHideFlags: 1
