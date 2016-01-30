@@ -22,8 +22,17 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollideWithBullet(PubSub.Signal signal) {
-		horniness -= 10;
+		Debug.Log(signal.data["damage"]);
+		if (signal.data != null && signal.data.ContainsKey("damage"))
+			horniness -= (int)signal.data["damage"];
+		else
+			horniness -= 10;
+
 		SweatForSeconds(2f);
+
+		if (horniness <= 0) {
+
+		}
 	}
 
 	void Update() {

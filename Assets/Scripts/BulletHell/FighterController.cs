@@ -39,10 +39,12 @@ public class FighterController : MonoBehaviour {
 		}
 	}
 
+	Hashtable data = new Hashtable();
 	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log("collision :"+other.gameObject);
 		if (other.gameObject.tag == "Enemy") {
-			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.EnemyCollide, this);
+			data["damage"] = other.gameObject.GetComponent<Bullet>().damage;
+			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.EnemyCollide, this, data);
 			Debug.Log("boom");
 
 			// Animate damage
