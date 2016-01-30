@@ -31,6 +31,7 @@ public class WalkingStateMachine : StateBehaviour {
 	float startGameTime;
 
 	void IdleWalking_Enter() {
+		Debug.Log("[WalkingStateManger] IdleWalking Start.");
 		startGameTime = Time.time + Random.Range(idleDurationMin, idleDurationMax);
 	}
 
@@ -45,7 +46,36 @@ public class WalkingStateMachine : StateBehaviour {
 	public EnemySpawner enemySpawner;
 
 	void EnemySpawn_Enter() {
+		Debug.Log("[WalkingStateManger] EnemySpawn Start.");
+
 		enemySpawner.SpawnEnemy(15f);
+		ChangeState(WalkingStates.BulletHell);
 	}
+
+	// --- Bullet Hell --- //
+	void BulletHell_Enter() {
+		Debug.Log("[WalkingStateManger] BulletHell Start.");
+
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
+	}
+
+	void BulletHell_Exit() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
+	}
+
+	void ChangeStateToPostBulletHell(PubSub.Signal s) {
+		ChangeState(WalkingStates.PostBulletHell);
+	}
+
+	// --- Post Bullet Hell --- //
+	void PostBulletHell_Enter() {
+		Debug.Log("[WalkingStateManger] PostBulletHell Start.");
+		ChangeState(WalkingStates.IdleWalking);
+	}
+
+	void PostBulletHell_Exit() {
+		GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PostBulletHellEnd, this);
+	}
+
 
 }

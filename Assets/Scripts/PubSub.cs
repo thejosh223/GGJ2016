@@ -6,8 +6,8 @@ namespace PubSub {
 	public enum Channel {
 		Null = 0,
 		BulletHellStart = 10,
-		BulletHellTimeUp = 11,
-		FinishRoute = 20
+		BulletHellEnd = 11,
+		PostBulletHellEnd = 13
 	}
 	
 	public class Signal {

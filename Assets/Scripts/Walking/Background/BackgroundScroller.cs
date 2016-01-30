@@ -4,14 +4,16 @@ using System.Collections;
 public class BackgroundScroller : MonoBehaviour {
 
 	public Sprite[] sprites;
+	public int spriteIndex;
 	public float scrollSpeedMultiplier;
-//	public bool makeContinuous;
 
 	ScrollController parentScroller;
 
 	void Start() {
 		parentScroller = GetComponentInParent<ScrollController>();
 		UpdateSprites();
+
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PostBulletHellEnd, OnPostBulletHellExit);
 	}
 
 	void Update() {
@@ -28,7 +30,7 @@ public class BackgroundScroller : MonoBehaviour {
 
 		if (transform.childCount == 0) {
 			// Spawn one in left-most position
-			SpawnRandomSpriteAt(leftBound);
+			SpawnSpriteAt(leftBound);
 		}
 
 		// Set LeftMost object and RightMost object
@@ -39,12 +41,12 @@ public class BackgroundScroller : MonoBehaviour {
 		while (rightMostTransform.position.x < rightBound.x) {
 			SpriteRenderer s = rightMostTransform.GetComponent<SpriteRenderer>();
 			Vector3 sBound = rightMostTransform.position + Vector3.right * rightMostTransform.localScale.x * s.sprite.texture.width / s.sprite.pixelsPerUnit;
-			rightMostTransform = SpawnRandomSpriteAt(sBound, true);
+			rightMostTransform = SpawnSpriteAt(sBound, true);
 		}
 		while (leftMostTransform.position.x > leftBound.x) {
 			SpriteRenderer s = rightMostTransform.GetComponent<SpriteRenderer>();
 			Vector3 sBound = leftMostTransform.position;
-			leftMostTransform = SpawnRandomSpriteAt(sBound, false);
+			leftMostTransform = SpawnSpriteAt(sBound, false);
 		}
 
 		// Destroying things on the left and right bounds
@@ -68,7 +70,7 @@ public class BackgroundScroller : MonoBehaviour {
 		}
 	}
 
-	Transform SpawnRandomSpriteAt(Vector3 pos, bool isRight = true) {
+	Transform SpawnSpriteAt(Vector3 pos, bool isRight = true) {
 		GameObject g = new GameObject("BG_" + Random.Range(1000, 9999));
 		g.transform.SetParent(transform);
 		g.transform.position = pos;
@@ -78,7 +80,7 @@ public class BackgroundScroller : MonoBehaviour {
 			g.transform.SetAsFirstSibling();
 		}
 		SpriteRenderer s = g.AddComponent<SpriteRenderer>();
-		s.sprite = sprites[Random.Range(0, sprites.Length)];
+		s.sprite = sprites[spriteIndex];
 
 		if (!isRight) {
 			g.transform.position -= Vector3.right * g.transform.localScale.x * s.sprite.texture.width / s.sprite.pixelsPerUnit;
@@ -87,4 +89,20 @@ public class BackgroundScroller : MonoBehaviour {
 		return g.transform;
 	}
 
+	
+	void OnPostBulletHellExit(PubSub.Signal s) {
+		NextIndex();
+		ResetSprites();
+	}
+
+	public void NextIndex() {
+		spriteIndex = (spriteIndex + 1) % sprites.Length;
+	}
+
+	public void ResetSprites() {
+		while (transform.childCount > 0) {
+			DestroyImmediate(transform.GetChild(0));
+		}
+		UpdateSprites();
+	}
 }

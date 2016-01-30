@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
@@ -14,14 +14,12 @@ public class Enemy : MonoBehaviour {
 
 	void Update() {
 		transform.position += Vector3.right * scrollController.direction * absoluteSpeed * Time.deltaTime;
-		if (scrollController.isMovingLeft) {
-			if (transform.position.x < targetX) {
-				GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellTimeUp, this);
-			}
-		} else {
-			if (transform.position.x > targetX) {
-				GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellTimeUp, this);
-			}
+
+		if (scrollController.isMovingLeft && transform.position.x < targetX ||
+		    !scrollController.isMovingLeft && transform.position.x > targetX) {
+
+			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellEnd, this);
+			Destroy(gameObject);
 		}
 	}
 }

@@ -8,8 +8,8 @@ public class ScrollController : MonoBehaviour {
 	public float direction;
 	public float speed;
 
-	public bool isMovingRight { get { return direction < 0; } }
-	public bool isMovingLeft { get { return direction > 0; } }
+	public bool isMovingRight { get { return direction > 0; } }
+	public bool isMovingLeft { get { return direction < 0; } }
 
 	void Awake() {
 		__instance = this;
