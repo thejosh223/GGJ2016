@@ -70,11 +70,11 @@ public class WalkingStateMachine : StateBehaviour {
 	// --- Post Bullet Hell --- //
 	void PostBulletHell_Enter() {
 		Debug.Log("[WalkingStateManger] PostBulletHell Start.");
-		ChangeState(WalkingStates.IdleWalking);
+		SuccessMessageUI.Instance.ShowMessage(SuccessMessageUI.SuccessMessage.Success, () => ChangeState(WalkingStates.IdleWalking));
 	}
 
 	void PostBulletHell_Exit() {
-		GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PostBulletHellEnd, this);
+		FadeOutOverlay.Instance.FadeOutIn(0.25f, 0.1f, () => GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PostBulletHellEnd, this));
 	}
 
 
