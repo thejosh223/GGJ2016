@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySpawner {
+public class BulletSpawner {
 	int enemyCount;
 
 	public void Init() {

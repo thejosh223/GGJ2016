@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public float libido { get; set; }
+
+	void Awake() {
+		__instance = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	static Player __instance;
+	public static Player Instance {
+		get { return __instance; }
 	}
+
 }

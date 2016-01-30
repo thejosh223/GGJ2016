@@ -5,7 +5,11 @@ using System.Collections.Generic;
 namespace PubSub {
 	public enum Channel {
 		Null = 0,
-		EnemyCollide
+
+		BulletHellStart = 10,
+		BulletHellTimeUp = 11,
+		FinishRoute = 20,
+		EnemyCollide = 30
 	}
 	
 	public class Signal {

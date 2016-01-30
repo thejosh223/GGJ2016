@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using MonsterLove.StateMachine;
 
@@ -9,7 +9,7 @@ public class BulletGameState : StateBehaviour {
 		End
 	}
 
-	private EnemySpawner _enemySpawner = new EnemySpawner();
+	private BulletSpawner _enemySpawner = new BulletSpawner();
 
 	void Awake() {
 		Initialize<States>();
