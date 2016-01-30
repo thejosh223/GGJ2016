@@ -14,9 +14,11 @@ public class FighterController : MonoBehaviour {
 		transform.Translate(new Vector3(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical")));
 	}
 
-	void OnCollisionEnter2D(Collision2D other) {
+	void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log("collision :"+other.gameObject);
 		if (other.gameObject.tag == "Enemy") {
 			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.EnemyCollide, this);
+			Debug.Log("boom");
 		}
 	}
 }

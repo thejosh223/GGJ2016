@@ -9,8 +9,6 @@ public class BulletGameState : StateBehaviour {
 		End
 	}
 
-	private BulletSpawner _enemySpawner = new BulletSpawner();
-
 	void Awake() {
 		Initialize<States>();
 	}
@@ -20,7 +18,6 @@ public class BulletGameState : StateBehaviour {
 	}
 #region Init state
 	void Init_Enter() {
-		_enemySpawner.Init();
 	}
 
 	void Init_Update() {
