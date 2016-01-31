@@ -85,7 +85,7 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &369318952
+--- !u!1001 &275012235
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -123,6 +123,42 @@ Prefab:
     - target: {fileID: 472160, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441836, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: intervalRatio
+      value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 471604, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 489414, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 434208, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 462600, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 482404, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 494260, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 421054, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 421054, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
@@ -369,7 +405,7 @@ MonoBehaviour:
   bulletCameraLowerRight: {x: 0, y: 0, z: 0}
   bullet: {fileID: 112916, guid: e7152d49d1dda4251ab8af72a7831afb, type: 2}
   difficultyInterval: .800000012
-  hpRegenPerLevel: 5
+  hpRegenPerLevel: 10
 --- !u!4 &1147758241
 Transform:
   m_ObjectHideFlags: 0
@@ -377,7 +413,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1147758239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.05700016, y: -.846538842, z: 0}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
