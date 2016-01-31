@@ -92,6 +92,6 @@ public class WalkingStateMachine : StateBehaviour {
 
 	void OnPlayerDead(PubSub.Signal s) {
 		Debug.Log("You Died!");
-//		FadeOutOverlay.Instance.FadeOutIn();
+		FadeOutOverlay.Instance.FadeOut(1.5f, () => Application.LoadLevel("GameOver"));
 	}
 }
