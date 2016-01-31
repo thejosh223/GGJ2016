@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 408684}
   - 212: {fileID: 21249116}
-  - 61: {fileID: 6113882}
+  - 58: {fileID: 5819284}
   - 50: {fileID: 5024328}
-  - 114: {fileID: 11430472}
+  - 114: {fileID: 11470072}
   m_Layer: 9
-  m_Name: TrackingBullet
+  m_Name: RegularBullet-2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,8 +47,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6113882
-BoxCollider2D:
+--- !u!58 &5819284
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -57,10 +57,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.000708367676, y: .0007083565}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .0645817891, y: .112831011}
---- !u!114 &11430472
+  m_Radius: .0399999991
+--- !u!114 &11470072
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 112916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937bbcfc04f44814894ab3a298b93d57, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f44ad78e501d49cca157bb314528a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bbbc7eb079253974a8c958c6ffd92d82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3db41c77184f02f49aae94569d736e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -124,12 +124,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bbbc7eb079253974a8c958c6ffd92d82,
+      objectReference: {fileID: 21300000, guid: 3db41c77184f02f49aae94569d736e07,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

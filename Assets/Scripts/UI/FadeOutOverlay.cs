@@ -26,6 +26,10 @@ public class FadeOutOverlay : MonoBehaviour {
 		LeanTween.value(gameObject, 1f, 0f, duration).setDelay(duration + delay).setOnUpdate(UpdateAlpha).setOnComplete(() => gameObject.SetActive(false));
 	}
 
+	public void FadeOut(float duration, float delay, Action toCall) {
+
+	}
+
 	void UpdateAlpha(float f) {
 		Color c = overlayImage.color;
 		c.a = f;

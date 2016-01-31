@@ -2,10 +2,15 @@
 using System.Collections;
 
 public class BulletSpawner : MonoBehaviour {
-	public float interval;
+
+	[Range(0, 1)]
+	public float intervalRatio = 0.75f;
 	public EmitterSet[] emitterSets;
-	private float _timer;
-	private bool _enabled = false;
+	public bool debugMode = false;
+
+	bool isFiring = false;
+	float timeToFireNextEmitter;
+
 	void OnEnable() {
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellStart, OnBulletHellStart);
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellEnd, OnBulletHellEnd);
@@ -17,27 +22,46 @@ public class BulletSpawner : MonoBehaviour {
 
 	private EmitterSet _currentEmitterSet;
 	public void Update() {
-		if (!_enabled) {
-			_timer = 0f;
+
+		// Used for debugging the emitters
+		if (Input.GetKeyDown(KeyCode.D)) {
+			debugMode = !debugMode;
+		}
+		for (int i = 1; i <= 9; i++) {
+			if (Input.GetKeyDown("" + i)) {
+				emitterSets[i - 1].gameObject.SetActive(true);
+			}
+		}
+		if (debugMode) {
 			return;
 		}
 
-		if (_timer >= interval) {
-			_timer = 0f;
+		// Shooting Control
+
+		if (!isFiring) {
+			return;
+		}
+
+		if (Time.time > timeToFireNextEmitter) {
+
 			_currentEmitterSet = emitterSets[Random.Range(0, emitterSets.Length)];
-			if (_currentEmitterSet == null) return;
-			if (!_currentEmitterSet.gameObject.activeInHierarchy && enabled)
+			if (_currentEmitterSet == null) {
+				return;
+			}
+
+			if (!_currentEmitterSet.gameObject.activeInHierarchy && enabled) {
 				_currentEmitterSet.gameObject.SetActive(true);
-		} else {
-			_timer += Time.deltaTime;
+				timeToFireNextEmitter = Time.time + _currentEmitterSet.spawningDuration + _currentEmitterSet.travelDurationEstimate * intervalRatio;
+			}
 		}
 	}
 
 	void OnBulletHellStart(PubSub.Signal s) {
-		_enabled = true;
+		isFiring = true;
 	}
+
 	void OnBulletHellEnd(PubSub.Signal s) {
-		_enabled = false;
+		isFiring = false;
 		foreach (GameObject g in GameObject.FindGameObjectsWithTag("Enemy")) {
 			Destroy(g);
 		}

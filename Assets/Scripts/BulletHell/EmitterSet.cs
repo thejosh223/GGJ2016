@@ -8,6 +8,8 @@ public class EmitterSet : MonoBehaviour {
 	public GameObject bulletPrefab;
 	[FormerlySerializedAs("set")]
 	public int countShots = 1;
+	[Range(0f, 1f)]
+	public float difficulty;
 
 	public float degreeStep = 0.0f;
 	public float degreeJiggle = 0f;
@@ -20,13 +22,16 @@ public class EmitterSet : MonoBehaviour {
 	public float speed;
 	public float speedJiggle = 0f;
 
+	// Not sure if this is accurate at all
+	public float spawningDuration { get { return delayBetweenShots * countShots; } }
+	public float travelDurationEstimate { get { return 11.5f / speed; } }
+
 	void OnEnable () {
 		StartCoroutine(InitCoroutine());
 	}
 
 	IEnumerator InitCoroutine() {
 		float deg = centerShots ? -((degreeStep * (countShots - 1)) / 2): 0f;
-		Debug.Log("Deg: " +deg);
 
 		for (int i = 0; i < countShots; i++) {
 			FireEmitters(damage, speed, deg);

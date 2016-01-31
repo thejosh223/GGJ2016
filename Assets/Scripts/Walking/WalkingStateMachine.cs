@@ -8,6 +8,7 @@ public class WalkingStateMachine : StateBehaviour {
 		IdleWalking,
 		EnemySpawn,
 		BulletHell,
+		EnemyLeave,
 		PostBulletHell
 	}
 
@@ -90,7 +91,7 @@ public class WalkingStateMachine : StateBehaviour {
 	}
 
 	void OnPlayerDead(PubSub.Signal s) {
-		//death event
-		Debug.Log("you died");
+		Debug.Log("You Died!");
+//		FadeOutOverlay.Instance.FadeOutIn();
 	}
 }
