@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 	public int horniness { get; set; }
 	public float horninessPercentage { get { return (float) horniness / (float) MAX_HORNINESS; } }
 
+	private bool _isDead = false;
+
 	Animator animator;
 	Coroutine sweatingCoroutine;
 
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		animator = GetComponentInChildren<Animator>();
+		_isDead = false;
 	}
 
 	void OnCollideWithBullet(PubSub.Signal signal) {
@@ -29,8 +32,9 @@ public class Player : MonoBehaviour {
 		}
 		SweatForSeconds(2f);
 
-		if (horniness <= 0) {
+		if (horniness <= 0 && !_isDead) {
 			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PlayerDead, this);
+			_isDead = true;
 		}
 	}
 
