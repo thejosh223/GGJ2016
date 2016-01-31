@@ -50,6 +50,10 @@ public class Player : MonoBehaviour {
 //		SweatForSeconds(2f);
 	}
 
+	void OnWaveEnd(PubSub.Signal signal) {
+		horniness += GameMgr.Instance.hpRegenPerLevel;
+	}
+
 	public void SweatForSeconds(float duration) {
 		if (sweatingCoroutine != null) {
 			StopCoroutine(sweatingCoroutine);
@@ -88,18 +92,21 @@ public class Player : MonoBehaviour {
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellStart, StartBulletHell);
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellEnd, StopBulletHell);
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PostBulletHellEnd, OnWaveEnd);
 	}
 	
 	void OnDestroy() {
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellStart, StartBulletHell);
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, StopBulletHell);
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.PostBulletHellEnd, OnWaveEnd);
 	}
 	
 	void OnDisable() {
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellStart, StartBulletHell);
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, StopBulletHell);
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.PostBulletHellEnd, OnWaveEnd);
 	}
 	
 	// ----------------- Singleton ----------------- //

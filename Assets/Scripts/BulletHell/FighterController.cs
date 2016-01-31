@@ -4,11 +4,17 @@ using System.Collections;
 public class FighterController : MonoBehaviour {
 
 	public float moveSpeed = 1f;
+	public float blinkDuration = 1f;
 	private Vector3 dimensions = Vector3.zero;
 
 	public Sprite damageSprite;
 	Sprite defaultSprite;
 	SpriteRenderer spriteRenderer;
+
+	[SerializeField]
+	GameObject goPlayerSprite;
+
+	private bool _isHurt = false;
 
 	void Awake() {
 		__instance = this;
@@ -45,6 +51,8 @@ public class FighterController : MonoBehaviour {
 
 	Hashtable data = new Hashtable();
 	void OnCollisionEnter2D(Collision2D other) {
+		if (_isHurt)
+			return;
 //		Debug.Log("collision :"+other.gameObject);
 		if (other.gameObject.tag == "Enemy") {
 			data["damage"] = other.gameObject.GetComponent<Bullet>().damage;
@@ -52,6 +60,7 @@ public class FighterController : MonoBehaviour {
 
 			// Animate damage
 			StartCoroutine(AnimateDamage());
+			StartCoroutine(Blink());
 		}
 	}
 
@@ -61,6 +70,38 @@ public class FighterController : MonoBehaviour {
 			dimensions = new Vector3(r.bounds.size.x, r.bounds.size.y, 0);
 		}
 		return dimensions;
+	}
+
+	IEnumerator Blink()
+	{
+		if(goPlayerSprite == null) yield break;
+
+		_isHurt = true;
+
+		SpriteRenderer[] renderers = goPlayerSprite.GetComponentsInChildren<SpriteRenderer>();
+		
+		float i = 0;
+		while(enabled && renderers.Length > 0 && i <= blinkDuration)
+		{
+			foreach(SpriteRenderer r in renderers)
+			{
+				if(r == null || r.material.color == null)
+					continue;
+				
+				r.material.color = new Color(r.material.color.r, r.material.color.g, r.material.color.b, 0.10f);
+			}
+			yield return new WaitForSeconds(0.07f);
+			foreach(SpriteRenderer r in renderers)
+			{
+				if(r == null)
+					continue;
+				
+				r.material.color = new Color(r.material.color.r, r.material.color.g, r.material.color.b, 1f);
+			}
+			i += Time.deltaTime + 0.07f;
+			yield return null;
+		}
+		_isHurt = false;
 	}
 
 	private static FighterController __instance;
