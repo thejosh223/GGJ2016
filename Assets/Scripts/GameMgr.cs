@@ -10,6 +10,8 @@ public class GameMgr : MonoBehaviour {
 	public Vector3 bulletCameraLowerRight = Vector3.zero;
 	public GameObject bullet;
 
+	public float difficultyInterval = 0.80f;
+
 	void OnEnable () {
 		if (_instance == null) {
 			_instance = this;

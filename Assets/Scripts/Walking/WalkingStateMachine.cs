@@ -37,6 +37,7 @@ public class WalkingStateMachine : StateBehaviour {
 	[Header("Idle Variables")]
 	public float idleDurationMin = 4f;
 	public float idleDurationMax = 6f;
+	public int level = 0;
 	float startGameTime;
 
 	void IdleWalking_Enter() {
@@ -90,6 +91,7 @@ public class WalkingStateMachine : StateBehaviour {
 
 	void PostBulletHell_Exit() {
 		FadeOutOverlay.Instance.FadeOutIn(0.25f, 0.1f, () => {stateHasSuccessPlayed = false;});
+		level++;
 	}
 
 	void OnPlayerDead(PubSub.Signal s) {
