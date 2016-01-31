@@ -21,13 +21,13 @@ public class WalkingStateMachine : StateBehaviour {
 		ChangeState(WalkingStates.IdleWalking);
 	}
 
-	void Update() {
-		if (Input.GetKeyDown(KeyCode.KeypadPlus)) {
-			Time.timeScale *= Mathf.Sqrt(2f);
-		} else if (Input.GetKeyDown(KeyCode.KeypadMinus)) {
-			Time.timeScale /= Mathf.Sqrt(2f);
-		}
-	}
+//	void Update() {
+//		if (Input.GetKeyDown(KeyCode.KeypadPlus)) {
+//			Time.timeScale *= Mathf.Sqrt(2f);
+//		} else if (Input.GetKeyDown(KeyCode.KeypadMinus)) {
+//			Time.timeScale /= Mathf.Sqrt(2f);
+//		}
+//	}
 	
 	void OnEnable() {
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PlayerDead, OnPlayerDead);
@@ -58,7 +58,7 @@ public class WalkingStateMachine : StateBehaviour {
 	}
 
 	void IdleWalking_Update() {
-		if (startGameTime < Time.time || Input.GetKeyDown(KeyCode.F)) {
+		if (startGameTime < Time.time) {
 			ChangeState(WalkingStates.EnemySpawn);
 		}
 	}

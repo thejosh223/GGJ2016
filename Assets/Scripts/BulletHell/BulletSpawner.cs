@@ -24,17 +24,17 @@ public class BulletSpawner : MonoBehaviour {
 	public void Update() {
 
 		// Used for debugging the emitters
-		if (Input.GetKeyDown(KeyCode.D)) {
-			debugMode = !debugMode;
-		}
-		for (int i = 1; i <= 9; i++) {
-			if (Input.GetKeyDown("" + i)) {
-				emitterSets[i - 1].gameObject.SetActive(true);
-			}
-		}
-		if (debugMode) {
-			return;
-		}
+//		if (Input.GetKeyDown(KeyCode.D)) {
+//			debugMode = !debugMode;
+//		}
+//		for (int i = 1; i <= 9; i++) {
+//			if (Input.GetKeyDown("" + i)) {
+//				emitterSets[i - 1].gameObject.SetActive(true);
+//			}
+//		}
+//		if (debugMode) {
+//			return;
+//		}
 
 		// Shooting Control
 
