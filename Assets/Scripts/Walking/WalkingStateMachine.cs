@@ -33,6 +33,12 @@ public class WalkingStateMachine : StateBehaviour {
 		}
 	}
 
+	protected override void ChangeState(System.Enum newState)
+	{
+		if (this != null)
+			stateMachine.ChangeState(newState);
+	}
+
 	// --- Idle --- //
 	[Header("Idle Variables")]
 	public float idleDurationMin = 4f;
@@ -69,10 +75,6 @@ public class WalkingStateMachine : StateBehaviour {
 		GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellStart, this);
 	}
 
-	void BulletHell_Exit() {
-		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
-	}
-
 	void ChangeStateToPostBulletHell(PubSub.Signal s) {
 		ChangeState(WalkingStates.PostBulletHell);
 	}
@@ -92,7 +94,10 @@ public class WalkingStateMachine : StateBehaviour {
 	}
 
 	void PostBulletHell_Exit() {
-		FadeOutOverlay.Instance.FadeOutIn(0.25f, 0.1f, () => {stateHasSuccessPlayed = false;});
+		FadeOutOverlay.Instance.FadeOutIn(0.25f, 0.1f, () => {
+			stateHasSuccessPlayed = false;
+			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PostBulletHellEnd, this);
+		});
 		level++;
 	}
 

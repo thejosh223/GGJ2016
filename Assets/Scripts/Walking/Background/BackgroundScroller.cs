@@ -92,6 +92,7 @@ public class BackgroundScroller : MonoBehaviour {
 	void OnPostBulletHellExit(PubSub.Signal s) {
 		parentScroller.NextLocation();
 		ResetSprites();
+		Debug.Log("[BackgroundScroller] should change bg");
 	}
 
 	public void ResetSprites() {

@@ -1875,7 +1875,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173386}
   m_LocalRotation: {x: 0, y: 0, z: -.258819073, w: .965925813}
-  m_LocalPosition: {x: -3, y: 1.20000005, z: 0}
+  m_LocalPosition: {x: -3, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491892}
@@ -2052,7 +2052,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187854}
   m_LocalRotation: {x: 0, y: 0, z: .382683456, w: .923879504}
-  m_LocalPosition: {x: 3, y: 3, z: 0}
+  m_LocalPosition: {x: 3, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442222}
@@ -2163,7 +2163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109766}
   m_LocalRotation: {x: 0, y: 0, z: -.382683456, w: .923879504}
-  m_LocalPosition: {x: -3, y: 3, z: 0}
+  m_LocalPosition: {x: -3, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401970}
@@ -2524,7 +2524,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117982}
   m_LocalRotation: {x: 0, y: 0, z: .258819073, w: .965925813}
-  m_LocalPosition: {x: 3, y: 1.20000005, z: 0}
+  m_LocalPosition: {x: 3, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 407460}
@@ -2927,7 +2927,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194368}
   m_LocalRotation: {x: 0, y: 0, z: .258819073, w: .965925813}
-  m_LocalPosition: {x: 3, y: 2, z: 0}
+  m_LocalPosition: {x: 3, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489644}
@@ -2942,7 +2942,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151250}
   m_LocalRotation: {x: 0, y: 0, z: -.258819073, w: .965925813}
-  m_LocalPosition: {x: -3, y: 2, z: 0}
+  m_LocalPosition: {x: -3, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 446284}
@@ -3223,7 +3223,7 @@ MonoBehaviour:
   difficulty: .400000006
   degreeStep: 5
   degreeJiggle: 0
-  delayBetweenShots: .300000012
+  delayBetweenShots: .200000003
   pingPong: 0
   centerShots: 1
   damage: 30
@@ -3340,7 +3340,7 @@ MonoBehaviour:
   pingPong: 0
   centerShots: 1
   damage: 30
-  speed: 3.5
+  speed: 5
   speedJiggle: 0
 --- !u!114 &11420726
 MonoBehaviour:
@@ -3377,7 +3377,7 @@ MonoBehaviour:
   pingPong: 0
   centerShots: 1
   damage: 30
-  speed: 3.5
+  speed: 5
   speedJiggle: 0
 --- !u!114 &11428422
 MonoBehaviour:
@@ -3689,7 +3689,7 @@ MonoBehaviour:
   difficulty: .600000024
   degreeStep: 10
   degreeJiggle: 0
-  delayBetweenShots: .25
+  delayBetweenShots: .150000006
   pingPong: 1
   centerShots: 1
   damage: 30
@@ -4006,7 +4006,7 @@ MonoBehaviour:
   difficulty: .699999988
   degreeStep: 15
   degreeJiggle: 0
-  delayBetweenShots: .300000012
+  delayBetweenShots: .200000003
   pingPong: 1
   centerShots: 1
   damage: 30
@@ -4411,7 +4411,7 @@ MonoBehaviour:
   difficulty: .800000012
   degreeStep: 15
   degreeJiggle: 0
-  delayBetweenShots: .300000012
+  delayBetweenShots: .200000003
   pingPong: 1
   centerShots: 1
   damage: 30
