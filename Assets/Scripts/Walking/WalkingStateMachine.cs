@@ -12,12 +12,8 @@ public class WalkingStateMachine : StateBehaviour {
 		PostBulletHell
 	}
 
-	void OnEnable() {
-		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PlayerDead, OnPlayerDead);
-	}
-
-	void OnDisable() {
-		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.PlayerDead, OnPlayerDead);
+	void Awake() {
+		__instance = this;
 	}
 
 	void Start() {
@@ -25,18 +21,26 @@ public class WalkingStateMachine : StateBehaviour {
 		ChangeState(WalkingStates.IdleWalking);
 	}
 
-	void Update() {
-		if (Input.GetKeyDown(KeyCode.KeypadPlus)) {
-			Time.timeScale *= Mathf.Sqrt(2f);
-		} else if (Input.GetKeyDown(KeyCode.KeypadMinus)) {
-			Time.timeScale /= Mathf.Sqrt(2f);
-		}
+//	void Update() {
+//		if (Input.GetKeyDown(KeyCode.KeypadPlus)) {
+//			Time.timeScale *= Mathf.Sqrt(2f);
+//		} else if (Input.GetKeyDown(KeyCode.KeypadMinus)) {
+//			Time.timeScale /= Mathf.Sqrt(2f);
+//		}
+//	}
+	
+	void OnEnable() {
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PlayerDead, OnPlayerDead);
+	}
+	
+	void OnDisable() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.PlayerDead, OnPlayerDead);
 	}
 
-	protected override void ChangeState(System.Enum newState)
-	{
-		if (this != null)
+	protected override void ChangeState(System.Enum newState) {
+		if (this != null) {
 			stateMachine.ChangeState(newState);
+		}
 	}
 
 	// --- Idle --- //
@@ -54,7 +58,7 @@ public class WalkingStateMachine : StateBehaviour {
 	}
 
 	void IdleWalking_Update() {
-		if (startGameTime < Time.time || Input.GetKeyDown(KeyCode.F)) {
+		if (startGameTime < Time.time) {
 			ChangeState(WalkingStates.EnemySpawn);
 		}
 	}
@@ -109,5 +113,10 @@ public class WalkingStateMachine : StateBehaviour {
 		Debug.Log("You Died!");
 		PersistentData.levelsDefeated = level;
 		FadeOutOverlay.Instance.FadeOut(1.5f, () => Application.LoadLevel("GameOver"));
+	}
+
+	private static WalkingStateMachine __instance;
+	public static WalkingStateMachine Instance {
+		get { return __instance; }
 	}
 }

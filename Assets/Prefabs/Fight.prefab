@@ -6371,7 +6371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 112916, guid: df43fc03dcc054e4a86d4ec4ec779a20, type: 2}
-  countShots: 5
+  countShots: 7
   difficulty: .600000024
   degreeStep: 0
   degreeJiggle: 45

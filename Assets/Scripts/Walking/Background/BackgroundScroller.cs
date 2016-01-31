@@ -5,6 +5,7 @@ public class BackgroundScroller : MonoBehaviour {
 
 	public Sprite[] sprites;
 	public float scrollSpeedMultiplier;
+	public Color nightTint;
 
 	ScrollController parentScroller;
 
@@ -80,6 +81,7 @@ public class BackgroundScroller : MonoBehaviour {
 		}
 		SpriteRenderer s = g.AddComponent<SpriteRenderer>();
 		s.sprite = sprites[(int) parentScroller.currentLocation];
+		s.color = (WalkingStateMachine.Instance.level / 4) % 2 == 1 ? nightTint : Color.white;
 
 		if (!isRight) {
 			g.transform.position -= Vector3.right * g.transform.localScale.x * s.sprite.texture.width / s.sprite.pixelsPerUnit;

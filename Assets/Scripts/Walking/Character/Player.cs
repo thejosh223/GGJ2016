@@ -34,9 +34,9 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.I)) {
-			IntensifyForSeconds(1f);
-		}
+//		if (Input.GetKeyDown(KeyCode.I)) {
+//			IntensifyForSeconds(1f);
+//		}
 	}
 
 	void OnCollideWithBullet(PubSub.Signal signal) {

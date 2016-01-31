@@ -24,17 +24,17 @@ public class BulletSpawner : MonoBehaviour {
 	public void Update() {
 
 		// Used for debugging the emitters
-		if (Input.GetKeyDown(KeyCode.D)) {
-			debugMode = !debugMode;
-		}
-		for (int i = 1; i <= 9; i++) {
-			if (Input.GetKeyDown("" + i)) {
-				emitterSets[i - 1].gameObject.SetActive(true);
-			}
-		}
-		if (debugMode) {
-			return;
-		}
+//		if (Input.GetKeyDown(KeyCode.D)) {
+//			debugMode = !debugMode;
+//		}
+//		for (int i = 1; i <= 9; i++) {
+//			if (Input.GetKeyDown("" + i)) {
+//				emitterSets[i - 1].gameObject.SetActive(true);
+//			}
+//		}
+//		if (debugMode) {
+//			return;
+//		}
 
 		// Shooting Control
 
@@ -44,7 +44,7 @@ public class BulletSpawner : MonoBehaviour {
 
 		if (Time.time > timeToFireNextEmitter) {
 
-			_currentEmitterSet = emitterSets[Random.Range(0, emitterSets.Length)];
+			_currentEmitterSet = GetRandomEmitter();
 			if (_currentEmitterSet == null) {
 				return;
 			}
@@ -56,13 +56,18 @@ public class BulletSpawner : MonoBehaviour {
 		}
 	}
 
+	EmitterSet GetRandomEmitter() {
+		return emitterSets[Random.Range(0, emitterSets.Length)];
+	}
+
 	void OnBulletHellStart(PubSub.Signal s) {
 		isFiring = true;
 		WalkingStateMachine w = s.sender as WalkingStateMachine;
 		if (w != null) {
-			Debug.Log("adjusting difficulty to: "+(intervalRatio*GameMgr.Instance.difficultyInterval));
-			if (((float)w.level*GameMgr.Instance.difficultyInterval) > 0.0f)
+			Debug.Log("[BulletSpawner] Adjusting difficulty to: " + (intervalRatio * GameMgr.Instance.difficultyInterval));
+			if (((float) w.level * GameMgr.Instance.difficultyInterval) > 0.0f) {
 				intervalRatio *= GameMgr.Instance.difficultyInterval;
+			}
 		}
 	}
 
