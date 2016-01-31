@@ -62,9 +62,7 @@ public class BulletSpawner : MonoBehaviour {
 
 	void OnBulletHellEnd(PubSub.Signal s) {
 		isFiring = false;
-		foreach (GameObject g in GameObject.FindGameObjectsWithTag("Enemy")) {
-			Destroy(g);
-		}
+
 		foreach (EmitterSet e in emitterSets) {
 			e.gameObject.SetActive(false);
 		}

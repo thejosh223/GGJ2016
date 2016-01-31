@@ -69,10 +69,6 @@ public class WalkingStateMachine : StateBehaviour {
 		GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellStart, this);
 	}
 
-	void BulletHell_Exit() {
-		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
-	}
-
 	void ChangeStateToPostBulletHell(PubSub.Signal s) {
 		ChangeState(WalkingStates.PostBulletHell);
 	}
@@ -81,13 +77,19 @@ public class WalkingStateMachine : StateBehaviour {
 	void PostBulletHell_Enter() {
 		Debug.Log("[WalkingStateManger] PostBulletHell Start.");
 
-		GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellEnd, this);
-		ChangeState(WalkingStates.IdleWalking);
-		SuccessMessageUI.Instance.ShowMessage(SuccessMessageUI.SuccessMessage.Success, () => ChangeState(WalkingStates.IdleWalking));
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
+	}
+
+	bool stateHasSuccessPlayed = false;
+	void PostBulletHell_Update() {
+		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && !stateHasSuccessPlayed) {
+			SuccessMessageUI.Instance.ShowMessage(SuccessMessageUI.SuccessMessage.Success, () => ChangeState(WalkingStates.IdleWalking));
+			stateHasSuccessPlayed = true;
+		}
 	}
 
 	void PostBulletHell_Exit() {
-		FadeOutOverlay.Instance.FadeOutIn(0.25f, 0.1f, () => GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PostBulletHellEnd, this));
+		FadeOutOverlay.Instance.FadeOutIn(0.25f, 0.1f, () => {stateHasSuccessPlayed = false;});
 	}
 
 	void OnPlayerDead(PubSub.Signal s) {
