@@ -66,8 +66,11 @@ public class WalkingStateMachine : StateBehaviour {
 	void BulletHell_Enter() {
 		Debug.Log("[WalkingStateManger] BulletHell Start.");
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
-
 		GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellStart, this);
+	}
+
+	void BulletHell_Exit() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
 	}
 
 	void ChangeStateToPostBulletHell(PubSub.Signal s) {

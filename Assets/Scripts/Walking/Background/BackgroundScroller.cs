@@ -12,7 +12,6 @@ public class BackgroundScroller : MonoBehaviour {
 		parentScroller = GetComponentInParent<ScrollController>();
 		UpdateSprites();
 
-		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PostBulletHellEnd, OnPostBulletHellExit);
 	}
 
 	void Update() {
@@ -101,4 +100,19 @@ public class BackgroundScroller : MonoBehaviour {
 		}
 		UpdateSprites();
 	}
+	
+	// ----------------- Subscriptions ----------------- //
+	
+	void OnEnable() {
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.PostBulletHellEnd, OnPostBulletHellExit);
+	}
+	
+	void OnDestroy() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.PostBulletHellEnd, OnPostBulletHellExit);
+	}
+	
+	void OnDisable() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.PostBulletHellEnd, OnPostBulletHellExit);
+	}
+
 }

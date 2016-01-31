@@ -18,8 +18,6 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		animator = GetComponentInChildren<Animator>();
-
-		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
 	}
 
 	void OnCollideWithBullet(PubSub.Signal signal) {
@@ -56,6 +54,22 @@ public class Player : MonoBehaviour {
 	public void StopSweating() {
 		animator.SetBool("sweating", false);
 	}
+
+	// ----------------- Subscriptions ----------------- //
+
+	void OnEnable() {
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
+	}
+	
+	void OnDestroy() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
+	}
+	
+	void OnDisable() {
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
+	}
+	
+	// ----------------- Singleton ----------------- //
 
 	static Player __instance;
 	public static Player Instance {
