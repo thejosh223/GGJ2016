@@ -184,6 +184,8 @@ MonoBehaviour:
   bulletCameraUpperLeft: {x: 0, y: 0, z: 0}
   bulletCameraLowerRight: {x: 0, y: 0, z: 0}
   bullet: {fileID: 112916, guid: e7152d49d1dda4251ab8af72a7831afb, type: 2}
+  difficultyInterval: .800000012
+  hpRegenPerLevel: 5
 --- !u!4 &521630543
 Transform:
   m_ObjectHideFlags: 0
