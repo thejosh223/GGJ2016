@@ -58,6 +58,12 @@ public class BulletSpawner : MonoBehaviour {
 
 	void OnBulletHellStart(PubSub.Signal s) {
 		isFiring = true;
+		WalkingStateMachine w = s.sender as WalkingStateMachine;
+		if (w != null) {
+			Debug.Log("adjusting difficulty to: "+(intervalRatio*GameMgr.Instance.difficultyInterval));
+			if (((float)w.level*GameMgr.Instance.difficultyInterval) > 0.0f)
+				intervalRatio *= GameMgr.Instance.difficultyInterval;
+		}
 	}
 
 	void OnBulletHellEnd(PubSub.Signal s) {
