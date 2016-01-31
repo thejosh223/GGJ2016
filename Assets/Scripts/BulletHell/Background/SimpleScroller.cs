@@ -8,6 +8,7 @@ public class SimpleScroller : MonoBehaviour {
 	public float speed;
 	public Sprite sprite;
 	public int spriteLayer;
+	public float glowDuration = 0f;
 
 	void Start() {
 		UpdateSprites();
@@ -76,12 +77,18 @@ public class SimpleScroller : MonoBehaviour {
 		} else {
 			g.transform.SetAsFirstSibling();
 		}
+
 		SpriteRenderer s = g.AddComponent<SpriteRenderer>();
 		s.sprite = sprite;
 		s.sortingOrder = spriteLayer;
 
 		if (!isRight) {
 			g.transform.position -= Vector3.right * g.transform.localScale.x * s.sprite.texture.width / s.sprite.pixelsPerUnit;
+		}
+
+		if (glowDuration > 0f) {
+			Glower glower = g.AddComponent<Glower>();
+			glower.alphaDuration = glowDuration;
 		}
 
 		return g.transform;
