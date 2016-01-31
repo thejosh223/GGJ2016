@@ -80,7 +80,6 @@ public class WalkingStateMachine : StateBehaviour {
 	// --- Post Bullet Hell --- //
 	void PostBulletHell_Enter() {
 		Debug.Log("[WalkingStateManger] PostBulletHell Start.");
-
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, ChangeStateToPostBulletHell);
 	}
 
@@ -99,6 +98,7 @@ public class WalkingStateMachine : StateBehaviour {
 
 	void OnPlayerDead(PubSub.Signal s) {
 		Debug.Log("You Died!");
+		PersistentData.levelsDefeated = level;
 		FadeOutOverlay.Instance.FadeOut(1.5f, () => Application.LoadLevel("GameOver"));
 	}
 }
