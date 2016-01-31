@@ -5,6 +5,7 @@ using System.Collections;
 public class DaysSurvivedCounter : MonoBehaviour {
 
 	public string prefixString;
+	public int addToLevelsDefeated = 0;
 	Text text;
 
 	void Start() {
@@ -12,7 +13,7 @@ public class DaysSurvivedCounter : MonoBehaviour {
 	}
 
 	void Update() {
-		text.text = prefixString + PersistentData.levelsDefeated;
+		text.text = prefixString + (PersistentData.levelsDefeated + addToLevelsDefeated);
 	}
 
 }
