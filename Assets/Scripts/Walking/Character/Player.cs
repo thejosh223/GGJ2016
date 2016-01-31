@@ -12,7 +12,8 @@ public class Player : MonoBehaviour {
 	private bool isSweating = false;
 
 	Animator animator;
-	Coroutine sweatingCoroutine;
+	Transform spriteTransform;
+	Coroutine intensificationCoroutine;
 
 	void Awake() {
 		__instance = this;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		animator = GetComponentInChildren<Animator>();
+		spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
 		_isDead = false;
 	}
 
@@ -30,6 +32,10 @@ public class Player : MonoBehaviour {
 			if (enemy != null) {
 				animator.speed = enemy.currentPercentage * 2f;
 			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.I)) {
+			IntensifyForSeconds(1f);
 		}
 	}
 
@@ -48,23 +54,29 @@ public class Player : MonoBehaviour {
 
 		// Animations
 //		SweatForSeconds(2f);
+		IntensifyForSeconds(1f);
 	}
 
 	void OnWaveEnd(PubSub.Signal signal) {
 		horniness += GameMgr.Instance.hpRegenPerLevel;
 	}
 
-	public void SweatForSeconds(float duration) {
-		if (sweatingCoroutine != null) {
-			StopCoroutine(sweatingCoroutine);
+	public void IntensifyForSeconds(float duration) {
+		if (intensificationCoroutine != null) {
+			StopCoroutine(intensificationCoroutine);
 		}
-		sweatingCoroutine = StartCoroutine(SweatCoroutine(duration));
+		intensificationCoroutine = StartCoroutine(StartIntensification(duration));
 	}
 
-	IEnumerator SweatCoroutine(float duration) {
-		StartSweating();
-		yield return new WaitForSeconds(duration);
-		StopSweating();
+	IEnumerator StartIntensification(float duration) {
+		float startTime = Time.time;
+		while (Time.time < (startTime + duration)) {
+			spriteTransform.localPosition = new Vector3(Mathf.Sin(Time.time * Random.Range(100f, 128f)) * 0.02f, 
+			                                            Mathf.Sin(Time.time * Random.Range(100f, 128f)) * 0.02f, 
+			                                            0f);
+			yield return null;
+		}
+		spriteTransform.localPosition =	Vector3.zero;
 	}
 
 	void StartBulletHell(PubSub.Signal s) {
