@@ -7,8 +7,6 @@ public class FadeOutOverlay : MonoBehaviour {
 
 	public bool startFadeIn = false;
 	public float startFadeInTime = 1f;
-	public bool startFadeOut = false;
-	public float startFadeOutTime = 1f;
 
 	Image overlayImage;
 
@@ -22,9 +20,6 @@ public class FadeOutOverlay : MonoBehaviour {
 
 		if (startFadeIn) {
 			FadeIn(startFadeInTime, null);
-		}
-		if (startFadeOut) {
-			FadeOut(startFadeOutTime, null);
 		}
 	}
 
