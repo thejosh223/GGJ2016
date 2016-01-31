@@ -49,6 +49,8 @@ public class WalkingStateMachine : StateBehaviour {
 	void IdleWalking_Enter() {
 		Debug.Log("[WalkingStateManger] IdleWalking Start.");
 		startGameTime = Time.time + Random.Range(idleDurationMin, idleDurationMax);
+
+		PersistentData.levelsDefeated = level;
 	}
 
 	void IdleWalking_Update() {

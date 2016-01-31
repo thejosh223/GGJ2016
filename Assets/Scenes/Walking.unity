@@ -214,6 +214,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 110698, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
   m_IsPrefabParent: 0
@@ -413,6 +417,7 @@ MonoBehaviour:
   bulletCameraLowerRight: {x: 0, y: 0, z: 0}
   bullet: {fileID: 112916, guid: e7152d49d1dda4251ab8af72a7831afb, type: 2}
   difficultyInterval: .800000012
+  hpRegenPerLevel: 5
 --- !u!4 &1147758241
 Transform:
   m_ObjectHideFlags: 0
