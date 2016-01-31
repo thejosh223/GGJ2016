@@ -59,6 +59,8 @@ public class Player : MonoBehaviour {
 
 	void OnWaveEnd(PubSub.Signal signal) {
 		horniness += GameMgr.Instance.hpRegenPerLevel;
+		if (horniness > MAX_HORNINESS)
+			horniness = 100;
 	}
 
 	public void IntensifyForSeconds(float duration) {
