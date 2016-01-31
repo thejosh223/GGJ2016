@@ -98,7 +98,9 @@ public class WalkingStateMachine : StateBehaviour {
 			stateHasSuccessPlayed = false;
 			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PostBulletHellEnd, this);
 		});
+
 		level++;
+		PersistentData.levelsDefeated = level;
 	}
 
 	void OnPlayerDead(PubSub.Signal s) {
