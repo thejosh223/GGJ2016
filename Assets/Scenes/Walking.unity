@@ -160,6 +160,22 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11441836, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: nightTint.r
+      value: .235294119
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441836, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: nightTint.g
+      value: .298039228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441836, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: nightTint.b
+      value: .709803939
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441836, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
+      propertyPath: nightTint.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e76720f87b7244fc0b62c97960b157e3, type: 2}
   m_IsPrefabParent: 0
@@ -205,6 +221,22 @@ Prefab:
     - target: {fileID: 110698, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 11454710, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
+      propertyPath: nightTint.r
+      value: .235294119
+      objectReference: {fileID: 0}
+    - target: {fileID: 11454710, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
+      propertyPath: nightTint.g
+      value: .298039228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11454710, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
+      propertyPath: nightTint.b
+      value: .709803939
+      objectReference: {fileID: 0}
+    - target: {fileID: 11454710, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
+      propertyPath: nightTint.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3132b7d76ad67944fb11d045abc3f9fc, type: 2}
