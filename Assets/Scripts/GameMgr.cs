@@ -11,6 +11,7 @@ public class GameMgr : MonoBehaviour {
 	public GameObject bullet;
 
 	public float difficultyInterval = 0.80f;
+	public int hpRegenPerLevel = 5;
 
 	void OnEnable () {
 		if (_instance == null) {
