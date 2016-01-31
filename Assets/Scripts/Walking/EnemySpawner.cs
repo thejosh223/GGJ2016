@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 	public GameObject enemyPrefab;
 	public Transform spawnPoint;
 	public Transform endPoint;
+	public Enemy currentEnemy;
 
 	public void SpawnEnemy(float duration) {
 		GameObject g = Instantiate(enemyPrefab);
@@ -15,6 +16,8 @@ public class EnemySpawner : MonoBehaviour {
 		Enemy e = g.GetComponent<Enemy>();
 		e.absoluteSpeed = Vector3.Distance(spawnPoint.position, endPoint.position) / duration;
 		e.targetX = endPoint.position.x;
+
+		currentEnemy = e;
 	}
 
 }

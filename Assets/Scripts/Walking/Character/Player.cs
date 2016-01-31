@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public float horninessPercentage { get { return (float) horniness / (float) MAX_HORNINESS; } }
 
 	private bool _isDead = false;
+	private bool isSweating = false;
 
 	Animator animator;
 	Coroutine sweatingCoroutine;
@@ -23,6 +24,15 @@ public class Player : MonoBehaviour {
 		_isDead = false;
 	}
 
+	void Update() {
+		if (isSweating) {
+			Enemy enemy = GetComponentInParent<EnemySpawner>().currentEnemy;
+			if (enemy != null) {
+				animator.speed = enemy.currentPercentage * 2f;
+			}
+		}
+	}
+
 	void OnCollideWithBullet(PubSub.Signal signal) {
 		Debug.Log(signal.data["damage"]);
 		if (signal.data != null && signal.data.ContainsKey("damage")) {
@@ -30,12 +40,14 @@ public class Player : MonoBehaviour {
 		} else {
 			horniness -= 10;
 		}
-		SweatForSeconds(2f);
 
 		if (horniness <= 0 && !_isDead) {
 			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.PlayerDead, this);
 			_isDead = true;
 		}
+
+		// Animations
+//		SweatForSeconds(2f);
 	}
 
 	public void SweatForSeconds(float duration) {
@@ -51,11 +63,22 @@ public class Player : MonoBehaviour {
 		StopSweating();
 	}
 
+	void StartBulletHell(PubSub.Signal s) {
+		StartSweating();
+	}
+
+	void StopBulletHell(PubSub.Signal s) {
+		StopSweating();
+		animator.speed = 1f;
+	}
+
 	public void StartSweating() {
+		isSweating = true;
 		animator.SetBool("sweating", true);
 	}
 
 	public void StopSweating() {
+		isSweating = false;
 		animator.SetBool("sweating", false);
 	}
 
@@ -63,14 +86,20 @@ public class Player : MonoBehaviour {
 
 	void OnEnable() {
 		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellStart, StartBulletHell);
+		GameMgr.Instance.GetPubSubBroker().Subscribe(PubSub.Channel.BulletHellEnd, StopBulletHell);
 	}
 	
 	void OnDestroy() {
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellStart, StartBulletHell);
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, StopBulletHell);
 	}
 	
 	void OnDisable() {
 		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.EnemyCollide, OnCollideWithBullet);
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellStart, StartBulletHell);
+		GameMgr.Instance.GetPubSubBroker().Unsubscribe(PubSub.Channel.BulletHellEnd, StopBulletHell);
 	}
 	
 	// ----------------- Singleton ----------------- //

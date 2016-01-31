@@ -8,11 +8,14 @@ public class Enemy : MonoBehaviour {
 	public float absoluteSpeed;
 	public float targetX;
 
+	float startX;
 	ScrollController scrollController;
 
 	void Start() {
 		scrollController = transform.parent.GetComponentInParent<ScrollController>();
 		spriteRenderer.sprite = scrollController.currentLocation.GetRandomLocationSprite();
+
+		startX = transform.position.x;
 	}
 
 	void Update() {
@@ -23,6 +26,13 @@ public class Enemy : MonoBehaviour {
 
 			GameMgr.Instance.GetPubSubBroker().Publish(PubSub.Channel.BulletHellEnd, this);
 			Destroy(gameObject);
+		}
+	}
+
+	public float currentPercentage {
+		get {
+			float width = targetX - startX;
+			return Mathf.Clamp01((transform.position.x - startX) / width);
 		}
 	}
 }
